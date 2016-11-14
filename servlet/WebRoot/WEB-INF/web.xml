@@ -64,6 +64,41 @@
     <servlet-name>ContextParamServlet</servlet-name>
     <servlet-class>com.helloweenvsfei.servlet.ContextParamServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>InjectionServlet</servlet-name>
+    <servlet-class>com.helloweenvsfei.servlet.InjectionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>com.helloweenvsfei.servlet.SearchServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>PostServlet</servlet-name>
+    <servlet-class>com.helloweenvsfei.servlet.PostServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>com.helloweenvsfei.servlet.UploadServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ProgressUploadServlet</servlet-name>
+    <servlet-class>com.helloweenvsfei.servlet.upload.ProgressUploadServlet</servlet-class>
+  </servlet>
+
+
+
+
+
 
 
   <servlet-mapping>
@@ -86,6 +121,43 @@
     <servlet-name>ContextParamServlet</servlet-name>
     <url-pattern>/servlet/ContextParamServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InjectionServlet</servlet-name>
+    <url-pattern>/servlet/InjectionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/servlet/SearchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PostServlet</servlet-name>
+    <url-pattern>/servlet/PostServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/servlet/UploadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProgressUploadServlet</servlet-name>
+    <url-pattern>/servlet/ProgressUploadServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 下面是资源配置 -->
+  <env-entry>
+  	<env-entry-name>hello</env-entry-name>
+  	<env-entry-type>java.lang.String</env-entry-type>
+  	<env-entry-value>Hello, Welcome to the JavaEE Resource Injection.</env-entry-value>
+  </env-entry>
+  <env-entry>
+  	<env-entry-name>i</env-entry-name>
+  	<env-entry-type>java.lang.Integer</env-entry-type>
+  	<env-entry-value>30</env-entry-value>
+  </env-entry>    
+  <env-entry>
+  	<env-entry-name>persons</env-entry-name>
+  	<env-entry-type>java.lang.String</env-entry-type>
+  	<env-entry-value>Helloween, Cobain, Roses, Axl, </env-entry-value>
+  </env-entry>  
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

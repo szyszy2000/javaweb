@@ -1,16 +1,31 @@
 package com.helloweenvsfei.servlet;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 
-import java.io.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-public class ContextParamServlet extends HttpServlet {
+import javax.annotation.Resource;
+
+public class InjectionServlet extends HttpServlet {
+	
+	//注入的字符串。一行的写法
+	private @Resource(name="hello") String hello;
+	
+	//注入的整数
+	private @Resource(name="i") int i;
+	
+	//两行的写法注解与代码分开
+	@Resource(name="persons")
+	private String persons;
 
 	/**
 	 * Constructor of the object.
 	 */
-	public ContextParamServlet() {
+	public InjectionServlet() {
 		super();
 	}
 
@@ -36,36 +51,23 @@ public class ContextParamServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
 		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>读取上下文参数</TITLE></HEAD>");
-		out.println("  <link rel='stylesheet' type='text/css' href='../css/style.css'>");
+		out.println("  <HEAD><TITLE>资源注入</TITLE></HEAD>");
+		out.println("<style>body {font-size:12px; }</style>");
+		out.println("<b>注入的字符串</b>: <br/>&nbsp;&nbsp;-&nbsp;" + hello + "<br/>");
+		out.println("<b>注入的整数</b>: <br/>&nbsp;&nbsp;-&nbsp;" + i + "<br/>");
+		out.println("<b>注入的字符串数组</b>: <br/>");
+		
+		for(String person : persons.split(",")){
+			out.println("&nbsp;&nbsp;-&nbsp;" + person + "<br/>");
+		}
+		
 		out.println("  <BODY>");
-		out.println("<div align=center><br/>");
-		out.println("<fieldset style='width:90%'><legend>所有的上下文参数</legend><br/>");
-		
-		//获取上下文
-		ServletContext servletContext = getServletConfig().getServletContext();
-		
-		//获取参数
-		String uploadFolder = servletContext.getInitParameter("upload folder");
-		String allowedFileType = servletContext.getInitParameter("allowed file type");		
-		
-		out.println("<div class='line'>");
-		out.println("    <div align='left' class='leftDiv'>上传文件夹</div>");
-		out.println("    <div align='left' class='rightDiv'>"+uploadFolder+"</div>");
-		out.println("</div>");
-		out.println("<div class='line'>");
-		out.println("    <div align='left' class='leftDiv'>实际磁盘路径</div>");
-		out.println("    <div align='left' class='rightDiv'>"+servletContext.getRealPath(uploadFolder)+"</div>");
-		out.println("</div>");
-		out.println("<div class='line'>");
-		out.println("    <div align='left' class='leftDiv'>允许上传的类型</div>");
-		out.println("    <div align='left' class='rightDiv'>"+allowedFileType+"</div>");
-		out.println("</div>");		
-		out.println("</fieldSet></div>");
 		out.println("  </BODY>");
 		out.println("</HTML>");
 		out.flush();

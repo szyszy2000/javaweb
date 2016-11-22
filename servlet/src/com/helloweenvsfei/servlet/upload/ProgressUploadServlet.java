@@ -177,8 +177,6 @@ public class ProgressUploadServlet extends HttpServlet {
 				}
 			}
 			
-
-			
 		}catch(Exception e){
 			response.getWriter().println("上传发生错误：" + e.getMessage());
 		}

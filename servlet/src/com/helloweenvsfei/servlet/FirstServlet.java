@@ -9,118 +9,83 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class FirstServlet extends HttpServlet {
-
+	
+	private static final long serialVersionUID = 2386052823761867369L;
+	
 	/**
-	 * Constructor of the object.
-	 */
-	public FirstServlet() {
-		super();
-	}
-
-	/**
-	 * Destruction of the servlet. <br>
-	 */
-	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
-	}
-
-	/**
-	 * The doGet method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
+	 * ä»¥ GET æ–¹å¼è®¿é—®é¡µé¢æ—¶æ‰§è¡Œè¯¥å‡½æ•°ã€‚
+	 * æ‰§è¡Œ doGet å‰ä¼šå…ˆæ‰§è¡Œ getLastModifiedï¼Œå¦‚æœæµè§ˆå™¨å‘ç° getLastModified è¿”å›çš„æ•°å€¼
+	 * ä¸ä¸Šæ¬¡è®¿é—®æ—¶è¿”å›çš„æ•°å€¼ç›¸åŒï¼Œåˆ™è®¤ä¸ºè¯¥æ–‡æ¡£æ²¡æœ‰æ›´æ–°ï¼Œæµè§ˆå™¨é‡‡ç”¨ç¼“å­˜è€Œä¸æ‰§è¡Œ doGetã€‚
+	 * å¦‚æœ getLastModified è¿”å› -1ï¼Œåˆ™è®¤ä¸ºæ˜¯æ—¶åˆ»æ›´æ–°çš„ï¼Œæ€»æ˜¯æ‰§è¡Œè¯¥å‡½æ•°ã€‚
+	 */ 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		//µ÷ÓÃservlet×Ô´øµÄÈÕÖ¾Êä³öĞÅÏ¢µ½¿ØÖÆÌ¨
-		this.log("Ö´ĞĞdoGet·½·¨...");
-		
-		//´¦ÀídoGet
+
+		// è°ƒç”¨ HttpServlet è‡ªå¸¦çš„æ—¥å¿—å‡½æ•°è¾“å‡ºä¿¡æ¯åˆ°æ§åˆ¶å°
+		this.log("æ‰§è¡Œ doGet æ–¹æ³•... ");
+
+		// å¤„ç† doGet
 		this.execute(request, response);
-		
 	}
 
 	/**
-	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
+	 * ä»¥ POST æ–¹å¼è®¿é—®é¡µé¢æ—¶æ‰§è¡Œè¯¥å‡½æ•°ã€‚
+	 */ 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		this.log("æ‰§è¡Œ doPost æ–¹æ³•... ");
 		
-		//µ÷ÓÃServlet×Ô´øµÄÈÕÖ¾´«ÊäĞÅÏ¢µ½¿ØÖÆÌ¨
-		this.log("Ö´ĞĞdoPost ·½·¨...");
+		// å¤„ç† doPost
 		this.execute(request, response);
 	}
 	
+	/**
+	 * è¿”å›è¯¥ Servlet ç”Ÿæˆçš„æ–‡æ¡£çš„æ›´æ–°æ—¶é—´ã€‚å¯¹ Get æ–¹å¼è®¿é—®æœ‰æ•ˆã€‚
+	 * è¿”å›çš„æ—¶é—´ä¸ºç›¸å¯¹äº 1970å¹´1æœˆ1æ—¥08:00:00 çš„æ¯«ç§’æ•°ã€‚
+	 * å¦‚æœä¸º -1 åˆ™è®¤ä¸ºæ˜¯å®æ—¶æ›´æ–°ã€‚é»˜è®¤ä¸º -1ã€‚
+	 */
 	@Override
-	public long getLastModified(HttpServletRequest request){
-		this.log("Ö´ĞĞgetLastModified·½·¨...");
-		return -1;
-	}
-	
-	//Ö´ĞĞ·½·¨
-	private void execute(HttpServletRequest request, HttpServletResponse response)
-			 throws ServletException, IOException{
+	public long getLastModified(HttpServletRequest request) {
 		
-		//ÉèÖÃresponse±àÂë·½Ê½
+		this.log("æ‰§è¡Œ getLastModified æ–¹æ³•... ");
+		
+		return 0;
+	}
+
+	private void execute(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException{
+
 		response.setCharacterEncoding("UTF-8");
-		//ÉèÖÃrequest±àÂë·½Ê½
 		request.setCharacterEncoding("UTF-8");
-		//·ÃÎÊ¸ÃServletµÄURI
+		
+		// è®¿é—®è¯¥ Servlet çš„ URI
 		String requestURI = request.getRequestURI();
-		//·ÃÎÊServletµÄ·½Ê½, GET»òÕßPOST
+		// è®¿é—®è¯¥ Servlet çš„æ–¹å¼ï¼Œæ˜¯ GET è¿˜æ˜¯ POST
 		String method = request.getMethod();
-		//¿Í»§¶ËÌá½»µÄ²ÎÊıparamÖµ
+		// å®¢æˆ·ç«¯æäº¤çš„å‚æ•° param å€¼
 		String param = request.getParameter("param");
 		
-		//ÉèÖÃÎÄµµÀàĞÍÎªHTMLÀàĞÍ
-		response.setContentType("text/html");
-		
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		
 		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
 		out.println("<HTML>");
 		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
 		out.println("  <BODY>");
-		out.println("  ÒÔ " + method + " ·½Ê½·ÃÎÊ¸ÃÒ³Ãæ¡£È¡µ½µÄ param ²ÎÊıÎª£º" + param + "<br/>");
+		out.println("	ä»¥ " + method + " æ–¹å¼è®¿é—®è¯¥é¡µé¢ã€‚å–åˆ°çš„ param å‚æ•°ä¸ºï¼š" + param + "<br/>");
 		
-		out.println("  <form action='" + requestURI + " ' method='get'>" +
-				"<input type='text' name='param' value='param string'>" +
-				"<input type='submit' value='ÒÔGET·½Ê½Ìá½»µ½Ò³Ãæ " + requestURI + "'></form>");
-
-		out.println("  <form action='" + requestURI + " ' method='post'>" +
-				"<input type='text' name='param' value='param string'>" +
-				"<input type='submit' value='ÒÔPOST·½Ê½Ìá½»µ½Ò³Ãæ " + requestURI + "'></form>");
+		out.println("	<form action='" + requestURI + "' method='get'><input type='text' name='param' value=''><input type='submit' value='ä»¥ GET æ–¹å¼è®¿é—® RequestServlet'></form>");
+		out.println("	<form action='" + requestURI + "' method='post'><input type='text' name='param' value=''><input type='submit' value='ä»¥ POST æ–¹å¼è®¿é—® RequestServlet'></form>");
 		
-		//ÓÉ¿Í»§¶Ëä¯ÀÀÆ÷¶ÁÈ¡¸ÃÎÄµµµÄ¸üĞÂÊ±¼ä
-		out.println(" <script> document.write('±¾Ò³Ãæ×îºó¸üĞÂÊ±¼ä£º'+ document.lastModified); </script>");
+		// ç”±å®¢æˆ·ç«¯æµè§ˆå™¨è¯»å–è¯¥æ–‡æ¡£çš„æ›´æ–°æ—¶é—´
+		out.println("	<script>document.write('æœ¬é¡µé¢æœ€åæ›´æ–°æ—¶é—´ï¼š' + document.lastModified + '<br />'); </script>");
+		out.println("	<script>document.write('æœ¬é¡µé¢URLï¼š' + location + '<br/>' ); </script>");
 		
-		out.println(" </BODY>");
+		out.println("  </BODY>");
 		out.println("</HTML>");
 		out.flush();
 		out.close();
 		
-	}
-
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
-	public void init() throws ServletException {
-		// Put your code here
 	}
 
 }

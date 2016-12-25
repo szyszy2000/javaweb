@@ -94,6 +94,27 @@
     <servlet-name>ProgressUploadServlet</servlet-name>
     <servlet-class>com.helloweenvsfei.servlet.upload.ProgressUploadServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ForwardServlet</servlet-name>
+    <servlet-class>com.helloweenvsfei.servlet.ForwardServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>RedirectServlet</servlet-name>
+    <servlet-class>com.helloweenvsfei.servlet.RedirectServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ThreadSaftyServlet</servlet-name>
+    <servlet-class>com.helloweenvsfei.servlet.ThreadSaftyServlet</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -140,6 +161,18 @@
   <servlet-mapping>
     <servlet-name>ProgressUploadServlet</servlet-name>
     <url-pattern>/servlet/ProgressUploadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ForwardServlet</servlet-name>
+    <url-pattern>/servlet/ForwardServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RedirectServlet</servlet-name>
+    <url-pattern>/servlet/RedirectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ThreadSaftyServlet</servlet-name>
+    <url-pattern>/servlet/ThreadSaftyServlet</url-pattern>
   </servlet-mapping>
   
   <!-- 下面是资源配置 -->
